@@ -1,0 +1,6 @@
+module Pods_ApeceApp_ApeceAppTests {
+  umbrella header "Pods-ApeceApp-ApeceAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

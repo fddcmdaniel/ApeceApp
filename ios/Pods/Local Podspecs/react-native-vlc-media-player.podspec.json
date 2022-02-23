@@ -1,0 +1,27 @@
+{
+  "name": "react-native-vlc-media-player",
+  "version": "1.0.38",
+  "summary": "VLC player",
+  "requires_arc": true,
+  "authors": {
+    "roshan.milinda": "rmilinda@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/razorRun/react-native-vlc-media-player.git",
+  "source": {
+    "git": "https://github.com/razorRun/react-native-vlc-media-player.git"
+  },
+  "source_files": "ios/RCTVLCPlayer/*",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "static_framework": true,
+  "dependencies": {
+    "React": [
+
+    ],
+    "MobileVLCKit": [
+      "3.3.17"
+    ]
+  }
+}
