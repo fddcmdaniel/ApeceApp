@@ -7,7 +7,6 @@ import { QuestionModalProps, IQuestion, DefaultQuestion } from './ContextInterfa
 function QuestionModal(props: QuestionModalProps) {
   const { showQuestionModal, setShowQuestionModal, question, setQuestions } = props;
   const [editQuestion, setEditQuestion] = useState<IQuestion>(question);
-
   const onInputChangeQuestion = (question: string) => setEditQuestion({ ...editQuestion, question: question });
 
   useEffect(() => {
@@ -35,11 +34,11 @@ function QuestionModal(props: QuestionModalProps) {
     <Modal isOpen={showQuestionModal} onClose={onCloseModal} animationPreset="slide" size="full" avoidKeyboard>
       <Modal.Content maxH="500" marginBottom={0} marginTop="auto">
         <Modal.CloseButton _icon={{ color: "#585858", size: "xs" }} />
-        <Modal.Header borderColor="white">{""}</Modal.Header>
+        <Modal.Header flexDirection="row" borderColor="white" _text={{ fontSize: 18, marginTop: 1, color: "#3f3f46" }}>Editar questão #{question.key + 1}</Modal.Header>
         <Modal.Body>
           <Box mt="3">
-            <Text>Pergunta</Text>
-            <TextArea variant="underlined" value={editQuestion.question} onChangeText={onInputChangeQuestion} />
+            <Text color="gray.700">Pergunta</Text>
+            <TextArea color="gray.500" variant="underlined" value={editQuestion.question} onChangeText={onInputChangeQuestion} />
           </Box>
         </Modal.Body>
         <Modal.Footer pb="10">

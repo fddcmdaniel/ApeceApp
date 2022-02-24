@@ -1,8 +1,8 @@
 
 import React, { useContext, useEffect, useState } from 'react';
-import { HStack, Center, Heading, NativeBaseProvider, VStack, Image, Box, Input, Button } from 'native-base';
+import { HStack, Center, Heading, VStack, Image, Input, Button } from 'native-base';
 import { Alert, ImageBackground } from "react-native"
-import { DefaultUser, IUser, StateLoginContext } from './ContextInterfaces';
+import { StateLoginContext } from './ContextInterfaces';
 import { AuthScreenProps } from '../navigation/ScreenNavigation';
 import { useNavigation } from '@react-navigation/native';
 
@@ -80,10 +80,10 @@ function Login() {
           <Image source={Logo} alt="#" size="250" shadow={1} />
           <Heading size="xl" color="blueGray.500">LOGIN</Heading>
           <HStack space={2} alignItems="center">
-            <Input autoFocus={true} w={{ base: "75%", md: "25%" }} variant="underlined" keyboardType="email-address" onChangeText={onInputChangeUser} placeholder="E-mail" />
+            <Input backgroundColor="rgba(86, 196, 151, 0.2)" borderRadius="sm" autoFocus={true} color="gray.500" w={{ base: "75%", md: "25%" }} variant="underlined" keyboardType="email-address" onChangeText={onInputChangeUser} placeholder="E-mail" />
           </HStack>
           <HStack space={2} alignItems="center">
-            <Input w={{ base: "75%", md: "25%" }} variant="underlined" onChangeText={onInputChangePassword} placeholder="Password" secureTextEntry={true} />
+            <Input backgroundColor="rgba(86, 196, 151, 0.2)" borderRadius="sm" color="gray.500" w={{ base: "75%", md: "25%" }} variant="underlined" onChangeText={onInputChangePassword} placeholder="Password" secureTextEntry={true} />
           </HStack>
           <Button size="lg" w="300" variant="subtle" colorScheme="blueGray" onPress={onButtonPress}> login</Button>
         </VStack>

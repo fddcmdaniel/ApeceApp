@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, VStack, Text, Box, Stack, Fab, Center, View, Button } from 'native-base';
+import { Pressable, VStack, Text, Box, Stack, Fab, Center, View, Button, Spacer } from 'native-base';
 import { DefaultAnswer, IAnswer } from './ContextInterfaces';
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import { AnswerScreenRouteProp, AnswersScreenProps } from '../navigation/ScreenNavigation';
@@ -7,6 +7,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import { styleSwipeList } from '../Styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AnswerModal from './AnswerModal';
+import { toLetters } from '../Logic';
 
 // import images
 export const welcomeAssets = require("../../assets/images/welcome.png");
@@ -48,13 +49,26 @@ function Answers() {
 
   const renderItem = (answer: any) => (
     <Pressable key={answer.item.key} >
-      <Box marginBottom={2} width="100%" p={3} h={100} bg={answer.item.correct ? "green.400" : "red.400"} rounded="md" shadow={1}>{answer.item.answer}</Box>
+      <Box flexDirection="row" borderColor="#6ee7b7" borderLeftWidth={10} marginBottom={2} width="99%" p={3} h={100} bg="blueGray.200" rounded="md" shadow={0} marginRight="3">
+        <Text fontSize="md" color="gray.500" pr={1} bold>{toLetters(answer.item.key + 1)})</Text>
+        <Text mt="0.5" textAlign="justify" color="gray.700" pr={16}>{answer.item.answer}</Text>
+        <Spacer />
+        {answer.item.correct ?
+          <Box position="absolute" right={3} top={3}>
+            <Icon name="check" size={18} color="#56c596" />
+          </Box>
+          :
+          <Box position="absolute" right={3} top={3}>
+            <Icon name="times" size={18} color="#be123c" />
+          </Box>
+        }
+      </Box>
     </Pressable>
   );
 
   const renderHiddenItem = (module: any, rowMap: any) => (
     <View style={styleSwipeList.rowBack}>
-      <Button isDisabled={alreadyModule ? true : false} style={[styleSwipeList.backRightBtn, styleSwipeList.backRightBtnRight]} onPress={onEditPress(rowMap, module)} _pressed={{ opacity: 50 }}>
+      <Button isDisabled={alreadyModule ? true : false} style={[styleSwipeList.backRightBtn, styleSwipeList.backRightBtnRightAnswer]} onPress={onEditPress(rowMap, module)} _pressed={{ opacity: 50 }}>
         <Icon name="edit" size={20} color="white" />
       </Button>
     </View >
@@ -65,7 +79,7 @@ function Answers() {
       <Center width={"100%"}>
         <VStack space={3} alignItems="center" width="100%">
           <Box mb={2} safeAreaTop={5}>
-            <Text fontSize={"xs"}>({answers.length} respostas disponíveis)</Text>
+            <Text color="gray.700" fontSize={"xs"}>({answers.length} respostas disponíveis)</Text>
           </Box>
         </VStack>
         <Stack display="flex" flexDirection="row" width="95%" marginTop={3}>

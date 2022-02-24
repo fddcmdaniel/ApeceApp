@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Box, Text, TextArea, Checkbox } from 'native-base';
-import { IQuestion, DefaultQuestion, AnswerModalProps, IAnswer, DefaultAnswer } from './ContextInterfaces';
+import { AnswerModalProps, IAnswer } from './ContextInterfaces';
+import { toLetters } from '../Logic';
 
 
 function AnswerModal(props: AnswerModalProps) {
@@ -42,13 +43,13 @@ function AnswerModal(props: AnswerModalProps) {
     <Modal isOpen={showAnswerModal} onClose={onCloseModal} animationPreset="slide" size="full" avoidKeyboard>
       <Modal.Content maxH="500" marginBottom={0} marginTop="auto">
         <Modal.CloseButton _icon={{ color: "#585858", size: "xs" }} />
-        <Modal.Header mt={2} borderColor="white" flexDirection="row">Editar resposta #{editAnswer.id}</Modal.Header>
+        <Modal.Header flexDirection="row" borderColor="white" _text={{ fontSize: 18, marginTop: 1, color: "#3f3f46" }}>Editar resposta # {toLetters(editAnswer.key + 1)})</Modal.Header>
         <Modal.Body>
           <Box mt="3">
-            <Text>Resposta</Text>
-            <TextArea variant="underlined" value={editAnswer.answer} onChangeText={onInputChangeAnswer} />
+            <Text color="gray.700">Resposta</Text>
+            <TextArea color="gray.500" variant="underlined" value={editAnswer.answer} onChangeText={onInputChangeAnswer} />
             <Checkbox rounded={"full"} size={"md"} mt={4} mb={2} value={String(isSelected)} style={answer.correct ? { display: "none" } : { display: "flex" }} onChange={setSelection} colorScheme="teal">
-              <Text ml={2} style={answer.correct ? { display: "none" } : { display: "flex" }}>Resposta correta ?</Text>
+              <Text color="gray.700" ml={2} style={answer.correct ? { display: "none" } : { display: "flex" }}>Resposta correta ?</Text>
             </Checkbox>
           </Box>
         </Modal.Body>

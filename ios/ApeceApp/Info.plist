@@ -37,6 +37,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
+	<!-- Camera and Libray -->
+	<key>NSPhotoLibraryUsageDescription</key>
+  <string>ApeceApp requires photo library access</string>
+  <key>NSCameraUsageDescription</key>
+  <string>ApeceApp requires camera access to take a photo</string>
+	<!-- Camera and Libray -->
 	<!-- Voice recognition -->
 	<key>NSMicrophoneUsageDescription</key>
   <string>Description of why you require the use of the microphone</string>

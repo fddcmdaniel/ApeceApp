@@ -22,7 +22,8 @@ export const DefaultAnswer = {
   answer: "",
   enable: true,
   correct: false,
-  questionId: -1
+  questionId: -1,
+  key: -1
 }
 
 // export const DefaultResult = [{

@@ -74,6 +74,16 @@ export interface AnswerModalProps {
   answer: IAnswer;
 }
 
+export interface CameraActionSheetProps {
+  showCameraActionSheet: boolean;
+  setShowCameraActionSheet: (cas: boolean) => void;
+  setQuestion?: (q: string) => void;
+  setAnswer?: (a: IAnswer) => void;
+  answer?: IAnswer;
+  actionType: boolean;
+  setLoading: (loading: boolean) => void;
+}
+
 // export interface LoginAPIProps {
 //   user: IUser;
 //   setUser: (u: IUser) => void;

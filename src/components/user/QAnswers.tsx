@@ -3,6 +3,7 @@ import { Text, Box, Radio } from 'native-base';
 import { AnswerProps, QuizContext } from './ContextInterfaces';
 import { IAnswer } from './ContextInterfaces';
 import Loading from '../Loading';
+import { toLetters } from '../../Logic';
 
 const QuizAnswers = (props: AnswerProps) => {
 
@@ -38,9 +39,9 @@ const QuizAnswers = (props: AnswerProps) => {
       <Radio.Group name="question" value={selectedQuestion} onChange={onAnswerSelected}>
         {answers.map((a: IAnswer) => {
           return (
-            <Box key={a.id} alignItems="flex-start" borderColor="#7BE495" backgroundColor="muted.100" borderWidth={2} borderRadius="2xl" paddingX={3} paddingY={0} mb={2} w="100%">
+            <Box key={a.id} alignItems="flex-start" borderColor="#7BE495" backgroundColor="muted.100" borderWidth={2} borderRadius="2xl" paddingX={3} paddingY={0} mb={2} w="full">
               <Radio colorScheme="teal" size="lg" value={String(a.id)} my={1}>
-                <Text padding={2}>{a.answer}</Text>
+                <Text padding={2} w="90%">{toLetters(a.key + 1)}) {a.answer}</Text>
               </Radio>
             </Box>
           );

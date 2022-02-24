@@ -42,19 +42,19 @@ function ModuleModal(props: ModuleModalProps) {
     <Modal isOpen={showModuleModal} onClose={onCloseModal} animationPreset="slide" size="full" avoidKeyboard>
       <Modal.Content maxH="500" marginBottom={0} marginTop="auto">
         <Modal.CloseButton _icon={{ color: "#585858", size: "xs" }} />
-        <Modal.Header borderColor="white">{""}</Modal.Header>
+        <Modal.Header borderColor="white" _text={{ fontSize: 18, marginTop: 1, color: "#3f3f46" }}>{modalType ? "Editar módulo #" + module.id : "Adicionar módulo"}</Modal.Header>
         <Modal.Body>
           <Box>
-            <Text>Título</Text>
-            <Input variant="underlined" value={editModule.title} onChangeText={onInputChangeTitle} />
+            <Text color="gray.700">Título</Text>
+            <Input color="gray.500" variant="underlined" value={editModule.title} onChangeText={onInputChangeTitle} />
           </Box>
           <Box mt="3">
-            <Text>Descrição</Text>
-            <TextArea variant="underlined" value={editModule.description} onChangeText={onInputChangeDescription} />
+            <Text color="gray.700">Descrição</Text>
+            <TextArea color="gray.500" variant="underlined" value={editModule.description} onChangeText={onInputChangeDescription} />
           </Box>
           <Box mt="3">
-            <Text>URL do vídeo de apresentação</Text>
-            <Input variant="underlined" value={editModule.url} onChangeText={onInputChangeURL} />
+            <Text color="gray.700">URL do vídeo de apresentação</Text>
+            <Input color="gray.500" variant="underlined" value={editModule.url} onChangeText={onInputChangeURL} />
           </Box>
         </Modal.Body>
         <Modal.Footer pb="10">

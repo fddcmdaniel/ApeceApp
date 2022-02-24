@@ -29,7 +29,7 @@ const FinalResult = () => {
             <Heading textAlign="center" mb="10" fontSize="3xl" color="trueGray.700">Resultado</Heading>
             <Text fontSize="2xl" color="trueGray.700" mb={6} bold>{finalResult}%</Text>
             <Text fontSize={"lg"} color="trueGray.700" textAlign={"center"} px="4" mb="32">{isApproved ? "Módulo concluído com sucesso!" : "Módulo não foi concluído!"}</Text>
-            <Button w={"90%"} variant="solid" colorScheme="blueGray" onPress={onHomePress}>Voltar aos módulos</Button>
+            <Button w={"80%"} variant="solid" colorScheme="blueGray" onPress={onHomePress}>Voltar aos módulos</Button>
           </Center>
         </Box>
       </ImageBackground>

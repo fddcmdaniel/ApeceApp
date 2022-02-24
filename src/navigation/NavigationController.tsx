@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import Login from '../components/Login';
-import Modules from '../components/Modules';
 import AddQuestion from '../components/AddQuestion';
 import AddAnswer from '../components/AddAnswer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -57,11 +56,11 @@ const NavigationController = () => {
     <Stack.Navigator initialRouteName="Auth"
       screenOptions={{
         headerLargeStyle: { backgroundColor: "#56C596" },
-        headerTitleStyle: { color: "#ffffff", fontSize: 20 }
+        headerTitleStyle: { color: "#ffffff", fontSize: 20 },
+        headerTintColor: "#ffffff"
       }}
     >
       <Stack.Screen name="Auth" options={{ headerShown: false }} component={Login} />
-      <Stack.Screen name="Modules" options={{ headerTitle: "Módulos", headerBackVisible: false, headerRight: linkHeader }} component={Modules} />
       {/* Delete */}
       <Stack.Screen name="ModulesTest" options={{ headerTitle: "Módulos", headerBackVisible: false, headerRight: linkHeader }} component={ModulesTest} />
       {/* Delete */}

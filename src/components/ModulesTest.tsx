@@ -12,6 +12,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import { ModulesScreenProps } from '../navigation/ScreenNavigation';
 import { styleSwipeList } from '../Styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Loading from './Loading';
 
 function ModulesTest() {
   const navigation = useNavigation<ModulesScreenProps>();
@@ -21,6 +22,7 @@ function ModulesTest() {
   const [modules, setModules] = useState<Array<IModule>>([]);
   const [enable, setEnable] = useState(true);
   const [modalType, setModalType] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   const onSearchModule = (search: string) => setSearchModule(search);
 
@@ -74,25 +76,33 @@ function ModulesTest() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3001/modules/admin", {
-      method: "get",
-      headers: { "content-type": "application/json" },
-      credentials: "include"
-    }).then(res => {
-      res.json().then(r => setModules(r))
-    });
+    const getModules = async () => {
+      await fetch("http://localhost:3001/modules/admin", {
+        method: "get",
+        headers: { "content-type": "application/json" },
+        credentials: "include"
+      }).then(res => {
+        res.json().then(r => setModules(r))
+      });
+      setIsLoaded(false);
+    }
+    getModules();
   }, [enable]);
 
   const renderItem = (module: any) => (
     <Pressable key={module.item.id} onPress={onModulePress(module.item.id)}>
-      <Box marginBottom={2} width="100%" p={3} h={100} bg="primary.500" rounded="md" shadow={1}>
+      <Box borderColor="#56c596" borderLeftWidth={10} marginBottom={2} width="99%" p={3} h={100} bg="blueGray.200" rounded="md" shadow={0} marginRight="3">
         <HStack alignItems={"flex-start"}>
-          <Text fontWeight="medium" fontSize={20}>{module.item.title}</Text>
+          <Text fontWeight="medium" fontSize={20} color="gray.700">{module.item.title}</Text>
           <Spacer />
-          <Text>{module.item.enable ? "enable" : "disable"}</Text>
+          {module.item.enable ?
+            <Icon name="check" size={18} color="#56c596" />
+            :
+            <Icon name="times" size={18} color="#be123c" />
+          }
         </HStack>
-        <Text>{module.item.description}</Text>
-        <Text>URL: {module.item.url ? "ok" : "nok"}</Text>
+        <Text mb={1} color="gray.700">{module.item.description}</Text>
+        <Text fontSize="12" color="gray.700">www.youtube.com/watch?v={module.item.url}</Text>
       </Box>
     </Pressable>
   );
@@ -113,20 +123,23 @@ function ModulesTest() {
 
   return (
     <>
+      {isLoaded && <Loading />}
       <Center width={"100%"}>
         <VStack space={3} alignItems="center" width="100%">
           <Box mb={2} safeAreaTop={5}>
-            <Text fontSize={"xs"}>({modules.length} módulos disponíveis)</Text>
+            <Text fontSize={"xs"} color="gray.700">({modules.length} módulos disponíveis)</Text>
           </Box>
           <Input
             placeholder="Pesquisar módulo"
             width="95%"
             height={10}
-            bg="gray.100"
+            color="gray.700"
+            backgroundColor="gray.200"
             borderRadius="10"
             placeholderTextColor="gray.500"
             borderWidth="0"
             onChangeText={onSearchModule}
+            InputLeftElement={<Icon style={{ paddingStart: 7 }} name="search" size={18} color="#737373" />}
           />
         </VStack>
         <Stack display="flex" flexDirection="row" width="95%" marginTop={3}>

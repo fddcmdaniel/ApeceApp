@@ -1,9 +1,9 @@
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Actionsheet } from 'native-base';
 import { ModuleContext } from './ContextInterfaces';
 import { useNavigation } from '@react-navigation/native';
-import { ModulesScreenProps, QuestionsScreenProps } from '../navigation/ScreenNavigation';
+import { QuestionsScreenProps } from '../navigation/ScreenNavigation';
 
 
 function QuestionActionSheet() {
@@ -16,28 +16,6 @@ function QuestionActionSheet() {
   const onEditPress = () => {
     navigation.navigate("AddQuestion", { id: String(question.id), question: question.question });
   }
-
-
-  // const onEnablePress = () => {
-  //   fetch("http://localhost:3001/module/enable", {
-  //     method: "put",
-  //     headers: {
-  //       "content-type": "application/json"
-  //     },
-  //     credentials: "include",
-  //     body: JSON.stringify({
-  //       moduleId: moduleId,
-  //       enable: enable
-  //     })
-  //   }).then(res => {
-  //     res.json().then(r => {
-  //       setEnable(r);
-  //     })
-  //   }).catch(err => {
-  //     console.log(err);
-  //   });
-  //   setShowModuleActionSheet(false);
-  // }
 
   return (
     <Actionsheet isOpen={showQuestionActionSheet} onClose={onCloseActionSheet} >

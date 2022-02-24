@@ -8,6 +8,7 @@ export const styleSwipeList = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingLeft: 15,
+    marginRight: 4
   },
   backRightBtn: {
     alignItems: 'center',
@@ -20,20 +21,30 @@ export const styleSwipeList = StyleSheet.create({
     width: 75,
   },
   backRightBtnLeft: {
-    backgroundColor: 'green',
+    backgroundColor: '#205072',
     right: 150,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0
   },
   backRightBtnCenter: {
-    backgroundColor: 'blue',
+    backgroundColor: '#329d9c',
     right: 75,
     borderRadius: 0
   },
+  backRightBtnCenterQuestion: {
+    backgroundColor: '#329d9c',
+    right: 75,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0
+  },
   backRightBtnRight: {
-    backgroundColor: 'red',
+    backgroundColor: '#38bdf8',
     right: 0,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0
   },
+  backRightBtnRightAnswer: {
+    backgroundColor: '#38bdf8',
+    right: 0
+  }
 });

@@ -6,9 +6,8 @@ import { QuizScreenProps, QuizScreenRouteProp } from '../../navigation/ScreenNav
 import { IQuestion, IResult, QuizContext } from './ContextInterfaces';
 import QAnswers from './QAnswers';
 import { ImageBackground } from 'react-native';
-import Loading from '../Loading';
 
-export const Background = require("../../../assets/images/question_bg.png");
+export const Background = require("../../../assets/images/question_bg_.png");
 
 const Quiz = () => {
 
@@ -73,7 +72,7 @@ const Quiz = () => {
         {questions.map((q: any, index: number) => {
           return (
             <ScrollView key={index} w={"full"} h={"full"} backgroundColor="white">
-              <ImageBackground source={Background} resizeMode="cover" style={{ flex: 1, width: "100%", position: "relative" }}>
+              <ImageBackground source={Background} resizeMode="cover" style={{ flex: 1, justifyContent: "center" }}>
                 <Center>
                   <Container safeAreaTop={20} mb={3}>
                     <Center>
@@ -82,15 +81,16 @@ const Quiz = () => {
                     </Center>
                   </Container>
                 </Center>
-                <Center>
-                  <Container mt={10}>
-                    <QAnswers questionId={q.id} />
-                  </Container>
-                </Center>
-                <Center>
-                  <Button colorScheme="teal" onPress={onPressNext(q.id)} width="75%" mt={4} isDisabled={selectedQuestion ? false : true}>{pageCount + 1 === questions.length ? "Terminar" : "Próxima"}</Button>
-                </Center>
               </ImageBackground>
+              <Center>
+                <Container mt={7}>
+                  <QAnswers questionId={q.id} />
+                </Container>
+              </Center>
+              <Center>
+                <Button colorScheme="teal" onPress={onPressNext(q.id)} width="80%" mt={4} isDisabled={selectedQuestion ? false : true}>{pageCount + 1 === questions.length ? "Terminar" : "Próxima"}</Button>
+              </Center>
+
             </ScrollView >
           )
         })}
